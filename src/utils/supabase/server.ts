@@ -1,10 +1,13 @@
+"use server";
+
 import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
+import { Database } from "~/supabase/supabase.types";
 
 export const createClient = async () => {
   const cookieStore = await cookies();
 
-  return createServerClient(
+  return createServerClient<Database>(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
     {
@@ -27,3 +30,13 @@ export const createClient = async () => {
     },
   );
 };
+
+export async function getBases() {
+  const client = await createClient();
+  return await client.from("opd_bases").select().limit(5);
+}
+
+export async function getBaseDetails(base_name: string) {
+  const client = await createClient();
+  return await client.from("opd_bases").select().eq("name", base_name).single();
+}
