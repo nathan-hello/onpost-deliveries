@@ -86,6 +86,7 @@ export type Database = {
         Row: {
           created_at: string
           gates: number[] | null
+          href: string
           id: number
           name: string
           restaurants: number[] | null
@@ -94,6 +95,7 @@ export type Database = {
         Insert: {
           created_at?: string
           gates?: number[] | null
+          href: string
           id?: number
           name: string
           restaurants?: number[] | null
@@ -102,6 +104,7 @@ export type Database = {
         Update: {
           created_at?: string
           gates?: number[] | null
+          href?: string
           id?: number
           name?: string
           restaurants?: number[] | null
@@ -253,7 +256,12 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      generate_random_string: {
+        Args: {
+          md5_seed: string
+        }
+        Returns: string
+      }
     }
     Enums: {
       [_ in never]: never

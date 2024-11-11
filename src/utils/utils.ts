@@ -1,3 +1,4 @@
+import { stringToBase64URL } from "@supabase/ssr";
 import { redirect } from "next/navigation";
 
 /**
@@ -12,5 +13,5 @@ export function encodedRedirect(
   path: string,
   message: string,
 ) {
-  return redirect(`${path}?${type}=${encodeURIComponent(message)}`);
+  return redirect(`${path}?type=${type}&message=${stringToBase64URL(message)}`);
 }

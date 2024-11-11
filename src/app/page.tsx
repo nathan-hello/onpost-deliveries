@@ -1,5 +1,4 @@
 import { HorizontalCard } from "@/components/horizontal-card";
-import { encodeBaseName } from "@/utils/supabase/db-utils";
 import { getBases } from "@/utils/supabase/server";
 import Link from "next/link";
 
@@ -28,7 +27,7 @@ const BaseList: React.FC = async () => {
             return null;
           }
           return (
-            <Link href={`/${encodeBaseName(b.name)}`}>
+            <Link href={`/${b.href}`}>
               <HorizontalCard
                 key={b.id}
                 title={b.name}

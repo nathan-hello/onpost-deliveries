@@ -36,7 +36,7 @@ export async function getBases() {
   return await client.from("opd_bases").select().limit(5);
 }
 
-export async function getBaseDetails(base_name: string) {
+export async function getBaseDetailsByHref(base_href: string) {
   const client = await createClient();
-  return await client.from("opd_bases").select().eq("name", base_name).single();
+  return await client.from("opd_bases").select().eq("href", base_href).single();
 }
