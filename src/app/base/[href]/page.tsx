@@ -9,7 +9,7 @@ export default async function Page({
   const { data: base, error } = await getBaseDetailsByHref(p.base);
 
   if (!base) {
-    <>{error.message}</>;
+    <>{error && error.message}</>;
   }
 
   return <>{JSON.stringify(base)}</>;
