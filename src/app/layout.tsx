@@ -40,16 +40,11 @@ export default function RootLayout({
                   <HeaderAuth />
                 </div>
               </nav>
-              <div className="flex flex-col flex-grow gap-20 max-w-5xl p-5">
-                {children}
-              </div>
-
+              <div className="w-full h-full flex-grow">{children}</div>
               <footer className="h-12 w-full flex items-center justify-center border-t mx-auto text-center text-xs gap-8">
-                <span className="">
-                  <Link href="https://github.com/nathan-hello/onpost-deliveries">
-                    <SiGithub />
-                  </Link>
-                </span>
+                <Link href="https://github.com/nathan-hello/onpost-deliveries">
+                  <SiGithub />
+                </Link>
                 <ThemeSwitcher />
               </footer>
             </div>

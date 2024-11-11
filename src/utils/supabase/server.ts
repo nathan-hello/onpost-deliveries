@@ -31,6 +31,31 @@ export const createClient = async () => {
   );
 };
 
+export async function getAuthedUserAndProfile() {
+  const client = await createClient();
+  const {
+    data: { user },
+  } = await client.auth.getUser();
+
+  if (user === null) {
+    return null;
+  }
+
+  const { data: profile } = await client
+    .from("opd_profiles")
+    .select()
+    .eq("id", user.id)
+    .single();
+  if (profile === null) {
+    console.log("user was found but profile was not");
+    console.table(user);
+    console.table(profile);
+    return null;
+  }
+
+  return { user, profile };
+}
+
 export async function getBases() {
   const client = await createClient();
   return await client.from("opd_bases").select().limit(5);
