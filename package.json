@@ -4,11 +4,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "db:seed": "npx tsx seed.ts > supabase/seed.sql",
-    "db:seed-sync": "npx @snaplet/seed sync",
-    "db:start": "npx supabase start",
-    "db:reset": "npx supabase db reset",
-    "db:types": "npx supabase gen types --linked > supabase/supabase.types.ts"
+    "db:types": "npx supabase gen types --linked > src/utils/supabase/types.ts"
   },
   "dependencies": {
     "@icons-pack/react-simple-icons": "^10.1.0",
